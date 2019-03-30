@@ -90,7 +90,7 @@ class DiscordBot
 		});
 	}
 	
-	static getJSONFromFile(path)
+	getJSONFromFile(path)
 	{
 		let text = fs.readFileSync(path);
 		return JSON.parse(text);
@@ -416,6 +416,7 @@ class DiscordBot
 	
 	executeCommand(command, commandParts, message, comment)
 	{
+
 		if (this.commands[command])
 		{
 			this.commands[command](commandParts, message, comment).then(()=>{
@@ -429,12 +430,12 @@ class DiscordBot
 		}
 	}
 	
-	static sendDM(user, message)
+	sendDM(user, message)
 	{
 		user.createDM().then((x)=>{x.send(message);});
 	}
 	
-	static cleanMessage(message)
+	cleanMessage(message)
 	{
 		let concatenatedMessagePart = [],
 			concatenatedMessage = [],
@@ -455,9 +456,9 @@ class DiscordBot
 		return concatenatedMessage;
 	}
 
-	static ping(commandParts, message)
+	ping(commandParts, message)
 	{
-		message.reply('Pong');
+		return message.reply('Pong');
 	}
 
 }
