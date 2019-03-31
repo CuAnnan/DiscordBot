@@ -2,7 +2,7 @@
   "name": "extensiblediscordbot",
   "version": "1.0.0",
   "description": "A bot to respond to discord commands by wrapping the functionality of the discord.js.org client",
-  "main": "sample.js",
+  "main": "DiscordBot.js",
   "dependencies": {
     "discord.js": "^11.4.2",
     "libsodium-wrappers": "^0.7.4",
