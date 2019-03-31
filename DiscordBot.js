@@ -416,6 +416,12 @@ class DiscordBot
 	
 	executeCommand(command, commandParts, message, comment)
 	{
+		let maybeDeleteMessage = ()=>{
+			if (this.getDeleteMessageForGuild(message.guild.id))
+			{
+				message.delete().catch(() => {});
+			}
+		}
 
 		if (this.commands[command])
 		{
@@ -423,14 +429,14 @@ class DiscordBot
 			if(response)
 			{
 				response.then(() => {
-					if (this.getDeleteMessageForGuild(message.guild.id))
-					{
-						message.delete().catch(() => {
-						});
-					}
+					maybeDeleteMessage();
 				}).catch((error) => {
 					console.warn(error);
 				});
+			}
+			else
+			{
+				maybeDeleteMessage();
 			}
 		}
 	}
