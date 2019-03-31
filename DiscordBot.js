@@ -419,14 +419,19 @@ class DiscordBot
 
 		if (this.commands[command])
 		{
-			this.commands[command](commandParts, message, comment).then(()=>{
-				if(this.getDeleteMessageForGuild(message.guild.id))
-				{
-					message.delete().catch(() => {});
-				}
-			}).catch((error)=>{
-				console.warn(error);
-			});
+			let response = this.commands[command](commandParts, message, comment);
+			if(response)
+			{
+				response.then(() => {
+					if (this.getDeleteMessageForGuild(message.guild.id))
+					{
+						message.delete().catch(() => {
+						});
+					}
+				}).catch((error) => {
+					console.warn(error);
+				});
+			}
 		}
 	}
 	
