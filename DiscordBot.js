@@ -340,7 +340,7 @@ class DiscordBot
 		data = data?data:'{}';
 		return new Promise((resolve, reject) => {
 			fs.writeFile(
-				'./settings.json',
+				__dirname+'/settings.json',
 				data,
 				'utf8',
 				function(err)

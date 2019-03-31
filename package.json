@@ -1,6 +1,6 @@
 {
   "name": "extensiblediscordbot",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A bot to respond to discord commands by wrapping the functionality of the discord.js.org client",
   "main": "DiscordBot.js",
   "dependencies": {
